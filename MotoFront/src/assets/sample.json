@@ -1,0 +1,46 @@
+{
+  "size": 100,
+  "numberOfElements": 35,
+  "totalElements": 35,
+  "number": 0,
+  "totalPages": 1,
+  "content": [
+    {
+      "driver": {
+        "name": "Aleix Espargaró",
+        "slug": "aleix-espargaro",
+        "code": "ESP",
+        "picture": "https://content.motorsportstats.com/driverProfilePicture/driverProfilePicture-4ec3a0cc-4543-4db0-be4d-3a0d712197ea.jpg",
+        "countryFlag": "https://assets.motorsportstats.com/flags/svg/es.svg"
+      },
+      "team": {
+        "name": "Aprilia Racing Team Gresini",
+        "slug": "gresini-racing",
+        "code": "GRE",
+        "picture": "https://content.motorsportstats.com/teamProfilePicture/teamProfilePicture-4aeca1ca-721b-4c7a-82fd-65d4c75c88ce.jpg",
+        "countryFlag": "https://assets.motorsportstats.com/flags/svg/it.svg"
+      },
+      "season": {
+        "name": "2021 World Championship",
+        "slug": "motogp_2021",
+        "year": 2021,
+        "endYear": 2021
+      },
+      "series": {
+        "name": "MotoGP",
+        "shortName": "MotoGP",
+        "code": "MotoGP",
+        "slug": "motogp",
+        "uuid": "a485d01c-f907-4ff7-83db-ca1c90cc28a1",
+        "picture": "https://content.motorsportstats.com/seriesProfilePicture/seriesProfilePicture-a485d01c-f907-4ff7-83db-ca1c90cc28a1.png"
+      },
+      "year": 2021,
+      "stats": {
+        "championshipRank": 8,
+        "podiums": 1,
+        "fastestLaps": 0,
+        "avgGridPosition": 8.72
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+<nav id="header" *ngIf="auth.isLoggedIn$ | async">
+  <p>
+    <mat-toolbar>
+      <span class="example-spacer"></span>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/rider">Oferta</button>
+      </mat-menu>
+      <span class="example-spacer"></span>
+      <ng-container *ngIf="auth.isLoggedIn$ | async" class="navigator">
+        Witaj {{auth.user!.sub}}
+        <button mat-raised-button class="buttons" aria-label="Example icon-button with heart icon" routerLink="/login"
+                (click)="logOut()">
+          Wyloguj
+        </button>
+        <span class="example-spacer"></span>
+      </ng-container>
+      <span class="example-spacer"></span>
+      <ng-container *ngIf="!(auth.isLoggedIn$ | async)">
+        <button mat-raised-button class="buttons" aria-label="Example icon-button with share icon"
+                routerLink="/register">
+          Zarejestruj
+        </button>
+      </ng-container>
+      <span class="example-spacer"></span>
+    </mat-toolbar>
+</nav>
+

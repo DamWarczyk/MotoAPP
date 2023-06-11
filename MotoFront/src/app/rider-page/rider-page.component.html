@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="myForm" (ngSubmit)="onClick()">
+      <h2>Dodaj Kierowce</h2>
+
+      <mat-form-field>
+        <input matInput placeholder="Imie" formControlName="name">
+        <mat-error *ngIf="name?.invalid && name?.touched">Niepoprawne imie</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Drużyna" formControlName="team">
+        <mat-error *ngIf="team?.invalid && team?.touched">Niepoprawna drużyna</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Numer" formControlName="number" type="number">
+        <mat-error *ngIf="number?.invalid && number?.touched">Niepoprawna numer</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid" class="add-button">Dodaj</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-content>
+    <div class="riders-list">
+      <h2>Lista zawodników:</h2>
+    <ng-template ngFor let-riderElement [ngForOf] = "ridersList">
+      <li>{{riderElement.name}}, {{riderElement.team}}, {{riderElement.number}}</li>
+    </ng-template>
+    </div>
+    <button mat-raised-button color="primary" (click)="exportToCSV()" class="export-button">Export do CSV</button>
+    <div></div>
+    <button mat-raised-button color="primary" (click)="exportToJSON()" class="export-button">Export do JSON</button>
+  </mat-card-content>
+</mat-card>
