@@ -1,12 +1,14 @@
 <drivers>
     <driver>
         <id>1</id>
+        <number>123</number>
         <name>John Doe</name>
-        <Number>123</Number>
+        <team>Formula</team>
     </driver>
     <driver>
         <id>2</id>
-        <name>Jane Smith</name>
-        <Number>789</Number>
+        <number>456</number>
+        <name>Alex Whatever</name>
+        <team>Wrum</team>
     </driver>
 </drivers>

@@ -8,7 +8,9 @@ import com.github.parsad23.motogpapi.reader.MotoGPData;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -182,5 +184,15 @@ public class RiderController {
         riderService.writeRidersToCsv(servletResponse.getWriter());
     }
 
+    @GetMapping(value = "/xml", produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<byte[]> generateRidersXmlBlob() {
+        byte[] xmlBlob = riderService.writeRidersToXML();
 
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_XML);
+        headers.setContentLength(xmlBlob.length);
+        headers.setCacheControl("no-cache");
+
+        return new ResponseEntity<>(xmlBlob, headers, HttpStatus.OK);
+    }
 }

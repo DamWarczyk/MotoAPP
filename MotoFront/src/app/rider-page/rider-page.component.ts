@@ -60,6 +60,11 @@ export class RiderPageComponent implements OnInit{
     this.http.exportRidersToJSON().subscribe( (data) => {saveAs(data, `drivers.json`)})
   }
 
+  exportToXML() {
+    this.http.exportRiderToXML().subscribe( (data) => {saveAs(data, `drivers.xml`)})
+  }
+
+
   getAllRider(){
     this.http.getAllRider().subscribe( (data) => this.ridersList = data)
   }

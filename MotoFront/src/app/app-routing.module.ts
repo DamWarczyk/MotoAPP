@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/strona', pathMatch: 'full' },
   { path: 'strona', component: MainPageComponent, canActivate: [isLoggedGuard] },
   { path: 'login', component: LoginPageComponent},
-  { path: 'rider', component:RiderPageComponent},
+  { path: 'rider', component:RiderPageComponent, canActivate: [isLoggedGuard]},
   { path: 'register', component: RegisterPageComponent}
 ];
 

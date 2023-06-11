@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<riders>
+  <rider>
+    <number>123</number>
+    <name>John Doe</name>
+    <team>Formula</team>
+  </rider>
+  <rider>
+    <number>456</number>
+    <name>Alex Whatever</name>
+    <team>Wrum</team>
+  </rider>
+  <rider>
+    <number>123</number>
+    <name>Johnatan Doe</name>
+    <team>Team X</team>
+  </rider>
+  <rider>
+    <number>789</number>
+    <name>Jane Smith</name>
+    <team>Zium</team>
+  </rider>
+  <rider>
+    <number>123</number>
+    <name>Picka</name>
+    <team>Team R</team>
+  </rider>
+  <rider>
+    <number>1234</number>
+    <name>Picka D</name>
+    <team>Team R</team>
+  </rider>
+</riders>

@@ -1,14 +1,14 @@
 {
-  "drivers": [
+  "riders": [
     {
-      "id": 1,
-      "name": "John Doe",
-      "Number": "123"
+      "number": 123,
+      "name": "Johnatan Doe",
+      "team": "Team X"
     },
     {
-      "id": 2,
+      "number": "789",
       "name": "Jane Smith",
-      "Number": "789"
+      "team": "Zium"
     }
   ]
 }

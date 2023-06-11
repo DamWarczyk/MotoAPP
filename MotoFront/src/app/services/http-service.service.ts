@@ -47,4 +47,7 @@ export class HttpServiceService {
     return this.http.get<any>(`http://localhost:8080/api/riders/grid/${year}`);
   }
 
+  public exportRiderToXML(): Observable<Blob>{
+    return this.http.get(`http://localhost:8080/api/riders/xml`, { responseType: 'blob' })
+  }
 }
