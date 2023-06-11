@@ -16,7 +16,7 @@ interface DataMotoCountryWins {
 export class TableComponent implements OnInit {
 
 
-  constructor(private htpp: HttpServiceService) {
+  constructor(private http: HttpServiceService) {
   }
 
   public dataMotoCountryWins: DataMotoCountryWins[] = []
@@ -25,22 +25,24 @@ export class TableComponent implements OnInit {
 
   displayedColumns: string[] = ['country', 'wins'];
 
+  year: number = 2021
+
   getMotoDriversData() {
-    this.htpp.getMotoSportData().subscribe((data: MotorDriversData) => {
+    this.http.getMotoSportData().subscribe((data: MotorDriversData) => {
       this.dataMotoDrivers = data
       this.dataMotoDrivers.content.sort((a, b) => {
         return a.stats.wins - b.stats.wins
       })
-      console.log(this.dataMotoDrivers)
       this.dataMotoDrivers.content.map((value, index, array) => {
-        if (!this.dataMotoCountryWins.find(value1 => value1.country == value.driver.countryFlag)){
+        if (!this.dataMotoCountryWins.find(value1 => value1.country == value.driver.countryFlag)) {
           this.dataMotoCountryWins.push({country: value.driver.countryFlag, wins: value.stats.wins})
-        }
-        else {
+        } else {
           this.dataMotoCountryWins.find(value1 => value1.country == value.driver.countryFlag)!!.wins += value.stats.wins
         }
       })
-      this.dataMotoCountryWins.sort( (a, b) => { return b.wins - a.wins})
+      this.dataMotoCountryWins.sort((a, b) => {
+        return b.wins - a.wins
+      })
       console.log(this.dataMotoCountryWins);
       this.dataSourceTable = new MatTableDataSource<DataMotoCountryWins>(this.dataMotoCountryWins)
     })
@@ -57,5 +59,31 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMotoDriversData()
+  }
+
+  onClick() {
+    this.http.getMotoSportByYear(this.year).subscribe(
+      (data) => {
+        this.dataMotoDrivers = data
+        this.dataMotoDrivers.content.sort((a, b) => {
+          return a.stats.wins - b.stats.wins
+        })
+        this.dataMotoCountryWins = []
+        this.dataMotoDrivers.content.map((value, index, array) => {
+          if (!this.dataMotoCountryWins.find(value1 => value1.country == value.driver.countryFlag)) {
+            this.dataMotoCountryWins.push({country: value.driver.countryFlag, wins: value.stats.wins})
+          } else {
+            this.dataMotoCountryWins.find(value1 => value1.country == value.driver.countryFlag)!!.wins += value.stats.wins
+          }
+        })
+        this.dataMotoCountryWins.sort((a, b) => {
+          return b.wins - a.wins
+        })
+        this.dataSourceTable = new MatTableDataSource<DataMotoCountryWins>(this.dataMotoCountryWins)
+      })
+  }
+
+  inputEvent(event: any) {
+    this.year = event.target.value
   }
 }

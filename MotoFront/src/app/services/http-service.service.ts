@@ -5,6 +5,7 @@ import {MotorDriversData} from "../interface/motor-drivers-data";
 import {Token} from "../interface/token";
 import {Login} from "../interface/login";
 import {Rider} from "../interface/rider";
+import {Student} from "../interface/student";
 @Injectable({
   providedIn: 'root'
 })
@@ -38,4 +39,12 @@ export class HttpServiceService {
   public getAllRider(): Observable<Rider[]>{
     return this.http.get<any>(`http://localhost:8080/api/riders`)
   }
+
+  public addStudent(student: Student): Observable<Student>{
+    return this.http.post<any>(`http://localhost:8080/student/add`, student);
+  }
+  public getMotoSportByYear(year: number): Observable<MotorDriversData>{
+    return this.http.get<any>(`http://localhost:8080/api/riders/grid/${year}`);
+  }
+
 }

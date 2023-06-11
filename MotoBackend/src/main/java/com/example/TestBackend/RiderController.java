@@ -80,6 +80,27 @@ public class RiderController {
 
     }
 
+    @GetMapping("/grid/{year}")
+    @CrossOrigin("http://localhost:4200")
+    public ResponseEntity<?> getGridByYear (@PathVariable String year) throws IOException, DataNotAvailableException {
+        try {
+
+            String url = "https://motorsportstats.com/api/results-summary?seasonSlug=motogp_" + year + "&seriesSlug=motogp&stats=championshipWin,championshipRank,starts,wins,podiums,poles,fastestLaps,bestFinishPosition,bestGridPosition,points,retirements,avgFinishPosition,avgGridPosition&size=100";
+            RestTemplate restTemplate = new RestTemplate();
+            String result = restTemplate.getForObject(url, String.class);
+            JSONParser jsonParser = new JSONParser();
+            JSONObject respond = (JSONObject) jsonParser.parse(result);
+            System.out.println("Grid Year Endpoint");
+            return new ResponseEntity<>(respond, HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>("Error!, Please try again", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+
+
     //zapisywanie do bazy
     @PostMapping
     public ResponseEntity<Rider> addRider(@RequestBody Rider rider) {

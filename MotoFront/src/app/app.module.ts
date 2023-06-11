@@ -27,6 +27,7 @@ import { NavigatorComponent } from './navigator/navigator.component';
 import {CommonModule} from "@angular/common";
 import { TableComponent } from './main-page/charts/table/table.component';
 import { RiderPageComponent } from './rider-page/rider-page.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -42,7 +43,8 @@ export function tokenGetter() {
     LoginPageComponent,
     NavigatorComponent,
     TableComponent,
-    RiderPageComponent
+    RiderPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,

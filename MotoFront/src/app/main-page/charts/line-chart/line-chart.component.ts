@@ -27,12 +27,13 @@ export class LineChartComponent implements OnInit{
   dataMoto: number[] = []
   labelsMoto: string[] = []
   fastestLaps: number[] = []
-  constructor(private htpp: HttpServiceService) {
+  year: number = 2021
+  constructor(private http: HttpServiceService) {
     Chart.register(Colors)
   }
 
   getMotoDriversData() {
-    this.htpp.getMotoSportData().subscribe((data: MotorDriversData) => {
+    this.http.getMotoSportData().subscribe((data: MotorDriversData) => {
       this.dataMotoDrivers = data
       this.dataMotoDrivers.content.sort((a, b) => {return a.stats.championshipRank - b.stats.championshipRank})
       console.log(this.dataMotoDrivers)
@@ -41,6 +42,10 @@ export class LineChartComponent implements OnInit{
   }
 
   RenderChart(dataMotoDrivers: MotorDriversData){
+
+    this.labelsMoto = []
+    this.dataMoto = []
+    this.fastestLaps = []
 
     dataMotoDrivers.content.map(value => {this.labelsMoto.push(value.driver.name)})
 
@@ -79,6 +84,18 @@ export class LineChartComponent implements OnInit{
   }
 
   onClick() {
+    this.http.getMotoSportByYear(this.year).subscribe(
+      (data) => {
+        this.dataMotoDrivers = data
+        this.dataMotoDrivers.content.sort((a, b) => {
+          return a.stats.championshipRank - b.stats.championshipRank
+        })
+        Chart.getChart("lineChart")?.destroy()
+        this.RenderChart(data)
+      })
+  }
 
+  inputEvent(event: any) {
+    this.year = event.target.value
   }
 }

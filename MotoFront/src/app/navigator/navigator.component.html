@@ -6,7 +6,8 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="/rider">Oferta</button>
+        <button mat-menu-item routerLink="/strona">Strona główna</button>
+        <button mat-menu-item routerLink="/rider">Dodaj kierowce</button>
       </mat-menu>
       <span class="example-spacer"></span>
       <ng-container *ngIf="auth.isLoggedIn$ | async" class="navigator">

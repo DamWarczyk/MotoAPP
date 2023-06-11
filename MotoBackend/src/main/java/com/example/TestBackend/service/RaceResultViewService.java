@@ -5,10 +5,12 @@ import com.example.TestBackend.model.RaceResultView;
 import com.example.TestBackend.repo.RaceResultViewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class RaceResultViewService {
     private final RaceResultViewRepository raceResultViewRepository;
 
