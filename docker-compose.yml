@@ -1,0 +1,27 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./MotoFront
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+  moto-database:
+    image: mysql
+    container_name: moto-database
+    environment:
+      MYSQL_ROOT_PASSWORD: Student2-
+      MYSQL_DATABASE: students
+      MYSQL_USER: sammy
+      MYSQL_PASSWORD: Student2-
+    ports:
+      - "3306:3306"
+  backend:
+    build:
+      context: ./MotoBackend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - moto-database
+

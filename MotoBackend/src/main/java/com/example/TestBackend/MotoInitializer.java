@@ -77,7 +77,7 @@ public class MotoInitializer implements CommandLineRunner {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-            File file = new File("./src/main/java/com/example/TestBackend/drivers.xml");
+            File file = new File("/app/drivers.xml");
             InputStream inputStream = new FileInputStream(file);
 
             Document document = builder.parse(new InputSource(inputStream));
@@ -110,7 +110,7 @@ public class MotoInitializer implements CommandLineRunner {
         }
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            File file = new File("./src/main/java/com/example/TestBackend/drivers.json");
+            File file = new File("/app/drivers.json");
 
             RidersWrapper ridersWrapper = objectMapper.readValue(file, RidersWrapper.class);
             List<Rider> riders = ridersWrapper.getRiders();

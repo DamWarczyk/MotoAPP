@@ -2,9 +2,6 @@ package com.example.TestBackend;
 
 import com.example.TestBackend.model.Rider;
 import com.example.TestBackend.service.RiderService;
-import com.github.parsad23.motogpapi.domain.*;
-import com.github.parsad23.motogpapi.exceptions.DataNotAvailableException;
-import com.github.parsad23.motogpapi.reader.MotoGPData;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +24,6 @@ import java.util.List;
 public class RiderController {
     private final RiderService riderService;
 
-    MotoGPData data = new MotoGPData();
 
     @Autowired
     public RiderController(RiderService riderService) {
@@ -65,7 +61,7 @@ public class RiderController {
 
     @GetMapping("/grid")
     @CrossOrigin("http://localhost:4200")
-    public ResponseEntity<?> getGridByRaceNumber () throws IOException, DataNotAvailableException {
+    public ResponseEntity<?> getGridByRaceNumber () throws IOException {
         try {
 
             String url = "https://motorsportstats.com/api/results-summary?seasonSlug=motogp_2021&seriesSlug=motogp&stats=championshipWin,championshipRank,starts,wins,podiums,poles,fastestLaps,bestFinishPosition,bestGridPosition,points,retirements,avgFinishPosition,avgGridPosition&size=100";
@@ -84,7 +80,7 @@ public class RiderController {
 
     @GetMapping("/grid/{year}")
     @CrossOrigin("http://localhost:4200")
-    public ResponseEntity<?> getGridByYear (@PathVariable String year) throws IOException, DataNotAvailableException {
+    public ResponseEntity<?> getGridByYear (@PathVariable String year) throws IOException {
         try {
 
             String url = "https://motorsportstats.com/api/results-summary?seasonSlug=motogp_" + year + "&seriesSlug=motogp&stats=championshipWin,championshipRank,starts,wins,podiums,poles,fastestLaps,bestFinishPosition,bestGridPosition,points,retirements,avgFinishPosition,avgGridPosition&size=100";
